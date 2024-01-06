@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 30px;
+            height: 100%;
+            max-width: 100%;
+            background: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjc5Ni1udW5ueS0wM2JfMi5qcGc.jpg');
+            position: center center fixed;
+        }
+
+        .dashboard-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333333;
+        }
+
+        .button {
+            margin-top: 20px;
+            
+            border-radius: 10%;
+            background-color: #252c6a;
+            color: aliceblue;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+
+        .button1{
+            margin-top: 17px;
+            margin-bottom: 5px;
+            border-radius: 10%;
+            background-color: #c3ce22;
+            color: #000;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 6px;
+            width: 80%;
+        }
+        .name{
+            
+            font-size: 26px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="dashboard-section" id="technical-section">
+        <h2 class="name">JAVA</h2>
+        <div class="info-box">
+            <p>Members: 500</p>
+            <p>Rating: 4.5</p>
+        </div>
+        <button class="button1"><a href="pay.html">Premium</a><span class="material-symbols-outlined">
+            vertical_align_top
+            </span></button>
+    </div>
+
+    <div class="dashboard-section" id="non-technical-section">
+        <h2 class="name">STUDENT PACK</h2>
+        <div class="info-box">
+            <p>Members: 300</p>
+            <p>Rating: 4.7</p>
+        </div>
+        <button class="button"><a style="color: aliceblue;" href="student.html">Explore</a></button>
+    </div>
+
+    <div class="dashboard-section" id="communication-section">
+        <h2 class="name">PYTHON</h2>
+        <div class="info-box">
+            <p>Members: 700</p>
+            <p>Rating: 4.8</p>
+        </div>
+        <button class="button1"><a href="pay.html">Premium</a><span class="material-symbols-outlined">
+            vertical_align_top
+            </span></button>
+    </div>
+
+    <div class="dashboard-section" id="sports-section">
+        <h2 class="name">DSA</h2>
+        <div class="info-box">
+            <p>Members: 200</p>
+            <p>Rating: 3.5</p>
+        </div>
+        <button class="button"><a style="color: aliceblue;" href="dashboard.html">Explore</a></button>
+    </div>
+
+    <div class="dashboard-section" id="cooking-section">
+        <h2 class="name">JAVA 8</h2>
+        <div class="info-box">
+            <p>Members: 400</p>
+            <p>Rating: 4.2</p>
+        </div>
+        <button class="button">Explore</button>
+    </div>
+
+    <div class="dashboard-section" id="content-creation-section">
+        <h2 class="name">R</h2>
+        <div class="info-box">
+            <p>Members: 600</p>
+            <p>Rating: 4.6</p>
+        </div>
+        <button class="button1"><a href="pay.html">Premium</a><span class="material-symbols-outlined">
+            vertical_align_top
+            </span></button>
+    </div>
+</div>
+
+<script>
+    // You can use JavaScript to dynamically load content into the sections or handle user interactions.
+    // For simplicity, this example focuses on the structure of the dashboard.
+
+    // Example: Fetch data and update the technical section
+    fetch('technical-data.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('technical-section').innerHTML += '<p>' + data.content + '</p>';
+        });
+
+    // Similar logic can be applied for other sections.
+</script>
+
+</body>
+</html

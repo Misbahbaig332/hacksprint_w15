@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        body {
+            background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjc5Ni1udW5ueS0wM2JfMi5qcGc.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        .big-heading {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .todo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 60%;
+            max-width: 600px;
+            margin-top: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .task-list {
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .task-actions {
+            margin-left: auto;
+        }
+
+        #newTaskContainer {
+            display: flex;
+            width: 100%;
+        }
+
+        #newTask {
+            flex: 1;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-right: 10px;
+        }
+
+        #addTaskBtn {
+            background-color: #252c6a;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%; /* Increased size */
+        }
+
+        #deleteTaskBtn {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sidebar {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 20%;
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="big-heading">
+        <h1>To-Do List</h1>
+    </div>
+    <div class="todo-container">
+        <div id="newTaskContainer">
+            <input type="text" id="newTask" placeholder="Add a new task">
+            <button id="addTaskBtn" onclick="addTask()">Add Task</button>
+        </div>
+
+        <div class="task-list">
+            <ul id="taskList">
+                <!-- Tasks will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+
+
+    <script>
+        function addTask() {
+            var newTaskInput = document.getElementById('newTask');
+            var taskList = document.getElementById('taskList');
+            var taskId = 'task' + (taskList.children.length + 1);
+    
+            // Create a new task list item
+            var listItem = document.createElement('li');
+            listItem.id = taskId;
+            listItem.innerHTML = `
+                <input type="checkbox" id="${taskId}" onchange="toggleTask('${taskId}')">
+                <label for="${taskId}" class="task-label">${newTaskInput.value}</label>
+                <div class="task-actions">
+                    <button id="deleteTaskBtn" onclick="deleteTask('${taskId}')">Delete</button>
+                </div>
+            `;
+    
+            // Add the new task to the list
+            taskList.appendChild(listItem);
+    
+            // Clear the input field
+            newTaskInput.value = '';
+        }
+    
+        function toggleTask(taskId) {
+            var checkbox = document.getElementById(taskId);
+            var label = document.querySelector('label[for="' + taskId + '"]');
+    
+            if (checkbox.checked) {
+                label.classList.toggle('strikethrough', true);
+            } else {
+                label.classList.toggle('strikethrough', false);
+            }
+        }
+    
+
+        
+        function deleteTask(taskId) {
+            var taskItem = document.getElementById(taskId);
+            taskItem.parentNode.removeChild(taskItem);
+        }
+    </script>
+    <style>
+        .strikethrough {
+            text-decoration: line-through;
+        }
+    
+        .task-label {
+            text-decoration: none;
+        }
+    </style>
+</body>
+</html>

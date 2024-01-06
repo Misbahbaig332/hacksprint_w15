@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjc5Ni1udW5ueS0wM2JfMi5qcGc.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+}
+
+#logo {
+    text-align: left;
+    
+    font-weight: bold;
+    margin-top: 6%;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+#logo h1{
+    font-size: 190px;
+    margin: 10%;
+}
+
+
+#login, #signup {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    height: fit-content;
+}
+
+#logo::before {
+    content: attr(data-content);
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: type 1s steps(12, end) forwards, fadeIn 1s ease-out forwards;
+}
+
+#logo p{
+    font-size: 30px;
+}

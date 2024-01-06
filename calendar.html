@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar with Deadlines</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjc5Ni1udW5ueS0wM2JfMi5qcGc.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    
+        h1 {
+            color: white; /* Set the heading color to white */
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Set a background color for tables */
+        }
+        td {
+        position: relative;
+        max-height: 60px; /* Set a maximum height for each cell */
+        overflow: auto; /* Enable vertical scrolling for excess content */
+    }
+
+    td .event-container {
+        top: calc(100% + 5px);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        display: none;
+        z-index: 1;
+    }
+
+    
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+    
+        .event-container {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            display: none;
+            z-index: 1; /* Ensure the deadline container appears above the table */
+        }
+    
+        /* Add spacing between dates and deadlines */
+        td {
+            position: relative;
+        }
+    
+        td .event-container {
+            top: calc(100% + 5px);
+        }
+    </style>
+    
+<body>
+    <h1>Interactive Calendar with Deadlines</h1>
+
+    <!-- Your Calendar Table -->
+
+   <!-- January 2024 -->
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarJan">
+    <thead>
+        <tr>
+            <th colspan="7">January 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+        </tr>
+        <tr>
+            <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+        </tr>
+        <tr>
+            <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+        </tr>
+        <tr>
+            <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+        </tr>
+        <tr>
+            <td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+
+ <!-- February 2024 -->
+<!-- February 2024 (starting from Monday) -->
+<table id="calendarFeb">
+    <thead>
+        <tr>
+            <th colspan="7">February 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+        </tr>
+        <tr>
+            <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+        </tr>
+        <tr>
+            <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+        </tr>
+        <tr>
+            <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+        </tr>
+        <tr>
+            <td>26</td><td>27</td><td>28</td><td>29</td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in February -->
+    </tbody>
+</table>
+
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarMar">
+    <thead>
+        <tr>
+            <th colspan="7">March 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+        </tr>
+        <tr>
+            <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+        <tr>
+            <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+        </tr>
+        <tr>
+            <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+        </tr>
+        <tr>
+            <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+
+<!-- January 2024 -->
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarApr">
+    <thead>
+        <tr>
+            <th colspan="7">April 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+        </tr>
+        <tr>
+            <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+        </tr>
+        <tr>
+            <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+        </tr>
+        <tr>
+            <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+        </tr>
+        <tr>
+            <td>29</td><td>30</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+ 
+   <!-- January 2024 -->
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarMay">
+    <thead>
+        <tr>
+            <th colspan="7">May 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+        </tr>
+        <tr>
+            <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+        </tr>
+        <tr>
+            <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+        </tr>
+        <tr>
+            <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+        </tr>
+        <tr>
+            <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>28</td>
+        </tr>
+        <tr>
+            <td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarJun">
+    <thead>
+        <tr>
+            <th colspan="7">June 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td>
+        </tr>
+        <tr>
+            <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+        </tr>
+        <tr>
+            <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+        </tr>
+        <tr>
+            <td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+        </tr>
+        <tr>
+            <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+ <!-- January 2024 -->
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarJul">
+    <thead>
+        <tr>
+            <th colspan="7">July 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+        </tr>
+        <tr>
+            <td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+        </tr>
+        <tr>
+            <td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+        </tr>
+        <tr>
+            <td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+        </tr>
+        <tr>
+            <td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+<!-- February 2024 -->
+<!-- February 2024 (starting from Monday) -->
+<table id="calendarAug">
+    <thead>
+        <tr>
+            <th colspan="7">August 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td>
+        </tr>
+        <tr>
+            <td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td>
+        </tr>
+        <tr>
+            <td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td>
+        </tr>
+        <tr>
+            <td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td>
+        </tr>
+        <tr>
+            <td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in February -->
+    </tbody>
+</table>
+<table id="calendarSep">
+    <thead>
+        <tr>
+            <th colspan="7">September 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td>1</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+        </tr>
+        <tr>
+            <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+        </tr>
+        <tr>
+            <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+        </tr>
+        <tr>
+            <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+        </tr>
+        <tr>
+            <td>30</td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+  <!-- January 2024 -->
+<!-- January 2024 (starting from Monday) -->
+<table id="calendarOct">
+    <thead>
+        <tr>
+            <th colspan="7">October 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+        </tr>
+        <tr>
+            <td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+        </tr>
+        <tr>
+            <td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+        </tr>
+        <tr>
+            <td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+        </tr>
+        <tr>
+            <td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td>
+        </tr>
+      
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+
+<table id="calendarNov">
+    <thead>
+        <tr>
+            <th colspan="7">November 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+        </tr>
+        <tr>
+            <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+        </tr>
+        <tr>
+            <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+        </tr>
+        <tr>
+            <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+        </tr>
+        <tr>
+            <td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+<table id="calendarDec">
+    <thead>
+        <tr>
+            <th colspan="7">December 2024</th>
+        </tr>
+        <tr>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+            <th>Sun</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Dynamically generate the days for each month here -->
+        <!-- For example, from day 1 to day 31 -->
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td>1</td>
+        </tr>
+        <tr>
+            <td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+        </tr>
+        <tr>
+            <td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+        </tr>
+        <tr>
+            <td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+        </tr>
+        <tr>
+            <td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+        </tr>
+        <tr>
+            <td>30</td><td>31</td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <!-- Continue for the rest of the weeks in January -->
+    </tbody>
+</table>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        createInteractiveCalendar('calendarJan');
+        createInteractiveCalendar('calendarFeb');
+        createInteractiveCalendar('calendarMar');
+        createInteractiveCalendar('calendarApr');
+        createInteractiveCalendar('calendarMay');
+        createInteractiveCalendar('calendarJun');
+        createInteractiveCalendar('calendarJul');
+        createInteractiveCalendar('calendarAug');
+        createInteractiveCalendar('calendarSep');
+        createInteractiveCalendar('calendarOct');
+        createInteractiveCalendar('calendarNov');
+        createInteractiveCalendar('calendarDec');
+        // Continue with other months
+    });
+    
+    // Object to store deadlines for each date
+    const deadlines = {};
+
+function createInteractiveCalendar(tableId) {
+    const table = document.getElementById(tableId);
+    const cells = table.querySelectorAll('td');
+
+    cells.forEach(cell => {
+        const eventContainer = document.createElement('div');
+        eventContainer.className = 'event-container';
+
+        cell.appendChild(eventContainer);
+
+        cell.addEventListener('click', () => {
+            const day = cell.textContent.trim();
+            if (day !== '') {
+                let deadline = deadlines[day] || '';
+                const eventText = prompt(`Enter deadline for $day (current: $deadline):`, deadline);
+
+                if (eventText !== null) {
+                    // Save the deadline
+                    deadlines[day] = eventText;
+
+                    const eventItem = document.createElement('div');
+                    eventItem.innerHTML = `Date: {day`<br>`Deadline: $eventText`;
+                    eventContainer.innerHTML = '';
+                    eventContainer.appendChild(eventItem);
+                    eventContainer.style.display = 'block';
+
+                    // Adjust the cell height to fit the content
+                    cell.style.height = `$cell.clientHeight` + `eventContainer.clientHeight`;
+                }
+            }
+        });
+    });
+}
+</script>
+</body>
+</html>

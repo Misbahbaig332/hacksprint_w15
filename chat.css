@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background:url(' https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjc5Ni1udW5ueS0wM2JfMi5qcGc.jpg');
+}
+
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 12%;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 8px;
+    text-decoration: none;
+}
+
+.navbar a:not(:last-child) {
+    border-right: 1px solid white;
+    margin-right: 8px;
+}
+
+.navbar .domain {
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+    font-size: 38px;
+    
+    margin-right: 40%;
+    
+}
+
+.material-symbols-outlined:hover{
+    color: green;
+}
+
+.search{
+    border-radius: 10%;
+    background-color: #0056b3;
+    border-color: #0056b3; 
+    color: beige;
+    cursor: pointer;
+}
+
+.navbar input[type="text"] {
+    margin: 10px;
+    padding: 8px;
+}
+
+.navbar button {
+    margin: 10px;
+    padding: 8px;
+}
+
+.navbar #createButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.navbar #createButton:hover {
+    background-color: #45a049;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+}
+
+.column {
+    flex: 1;
+    text-align: center;
+}
+
+.column img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.column h2 {
+    margin-top: 10px;
+}
+
+#noMatchMessage {
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+.text-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#container {
+    display: flex;
+}
+
+#sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+#content {
+    flex: 1;
+    padding: 20px;
+}
+
+.menu-heading {
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+.menu-item {
+    font-size: 20px;
+    padding: 10%;
+    
+    cursor: pointer;
+}
+
+#chat-container {
+    display: none;
+}
+
+#chat-messages {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+}

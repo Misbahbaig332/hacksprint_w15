@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Layout</title>
+    <style>
+       body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */ /* Remove this line */
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+
+        .box {
+            position: relative;
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            box-sizing: border-box;
+            height: 200px; /* Increased height */
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            line-height: 150px; /* Adjusted line-height to center text vertically */
+            font-family: Arial, sans-serif;
+            border-radius: 20px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        .box:hover::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 2, 2, 0.5);
+            transition: transform 0.5s ease-in-out;
+            transform: translateY(100%);
+            z-index: -1;
+        }
+
+        .box:hover::before:hover {
+            transform: translateY(0);
+        }
+
+        .box:hover::after {
+            content: attr(data-text);
+            /* position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); */
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 1.2em;
+            z-index: 1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 10px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar button {
+            color: white;
+            background-color: #3498db;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .domain {
+            color: white;
+            font-size: 1.5em;
+        }
+
+        @media screen and (max-width: 768px) {
+            .box {
+                width: calc(50% - 20px);
+                margin: 5px; /* Reduced margin for smaller screens */
+                height: 120px; /* Adjusted height for smaller screens */
+                line-height: 120px; /* Adjusted line-height for smaller screens */
+            }
+
+            .domain {
+                font-size: 1em;
+            }
+        }
+
+        /* Popup modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+ 
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        } 
+    </style>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 30px;
+            height: 100%;
+            max-width: 100%;
+            background: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjc5Ni1udW5ueS0wM2JfMi5qcGc.jpg');
+            position: center center fixed;
+        }
+
+        .dashboard-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333333;
+        }
+
+        .button {
+            margin-top: 100px;
+            border-radius: 10%;
+            background-color: #252c6a;
+            color: aliceblue;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 6px;
+            width: 80%;
+        }
+        .name{
+            
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="home.html">Home |</a>
+            <a href="#">About |</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="domain">DOMAINS</div>
+        <div>
+            <input type="text" id="searchInput" placeholder="Search by Group Name">
+            <button onclick="searchGroups()" class="search">Search</button>
+            <button id="createButton" onclick="createGroup()">Create<a href="create.html"></a></button>
+        </div>
+    </div>
+
+    <div class="group" id="groupContainer">
+        <!-- ... (previous group content remains unchanged) ... -->
+    </div>
+
+    
+
+    <p id="noMatchMessage" style="display: none;">
+        No groups found with that name.
+    </p>
+
+    <div class="dashboard-container">
+        <div class="dashboard-section" id="technical-section">
+            <h2 class="name">Technical</h2>
+            <!--div class="info-box">
+                <p>Members: 500</p>
+                <p>Rating: 4.5</p>
+            </div-->
+            <button class="button"><a style="color: aliceblue;" href="domain2.html">Explore</a></button>
+        </div>
+    
+        <div class="dashboard-section" id="non-technical-section">
+            <h2 class="name">Non-Technical</h2>
+            <!--div class="info-box">
+                <p>Members: 300</p>
+                <p>Rating: 4.0</p>
+            </div-->
+            <button class="button">Explore</button>
+        </div>
+    
+        <div class="dashboard-section" id="communication-section">
+            <h2 class="name">Communication</h2>
+            <!--div class="info-box">
+                <p>Members: 700</p>
+                <p>Rating: 4.8</p>
+            </div-->
+            <button class="button">Explore</button>
+        </div>
+    
+        <div class="dashboard-section" id="sports-section">
+            <h2 class="name">Sports</h2>
+            <!--div class="info-box">
+                <p>Members: 200</p>
+                <p>Rating: 3.5</p>
+            </div-->
+            <button class="button">Explore</button>
+        </div>
+    
+        <div class="dashboard-section" id="cooking-section">
+            <h2 class="name">Cooking</h2>
+            <!--div class="info-box">
+                <p>Members: 400</p>
+                <p>Rating: 4.2</p>
+            </div-->
+            <button class="button">Explore</button>
+        </div>
+    
+        <div class="dashboard-section" id="content-creation-section">
+            <h2 class="name">Content Creation</h2>
+            <!--div class="info-box">
+                <p>Members: 600</p>
+                <p>Rating: 4.6</p>
+            </div-->
+            <button class="button">Explore</button>
+        </div>
+    </div>
+
+    <script>
+        function searchGroups() {
+            var searchInput = document.getElementById("searchInput").value.toLowerCase();
+            var boxes = document.getElementsByClassName("box");
+
+            for (var i = 0; i < boxes.length; i++) {
+                var boxContent = boxes[i].textContent.toLowerCase();
+                if (boxContent.includes(searchInput)) {
+                    fadeInBox(boxes[i]);
+                } else {
+                    fadeOutBox(boxes[i]);
+                }
+            }
+        }
+
+        function fadeInBox(box) {
+            box.style.opacity = 1;
+            displayPopup(box);
+        }
+
+        function fadeOutBox(box) {
+            box.style.opacity = 0;
+        }
+
+        function displayPopup(matchingBox) {
+            var modal = document.getElementById("myModal");
+            var modalContent = document.getElementById("modalContent");
+
+            modal.style.display = "flex";
+            modalContent.innerHTML = matchingBox.textContent;
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }
+    </script>
+</body>
+</html>
