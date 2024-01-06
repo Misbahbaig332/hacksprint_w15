@@ -578,20 +578,20 @@ function createInteractiveCalendar(tableId) {
             const day = cell.textContent.trim();
             if (day !== '') {
                 let deadline = deadlines[day] || '';
-                const eventText = prompt(`Enter deadline for $day (current: $deadline):`, deadline);
+                const eventText = prompt(`Enter deadline for ${day} (current: ${deadline}):`, deadline);
 
                 if (eventText !== null) {
                     // Save the deadline
                     deadlines[day] = eventText;
 
                     const eventItem = document.createElement('div');
-                    eventItem.innerHTML = `Date: {day`<br>`Deadline: $eventText`;
+                    eventItem.innerHTML = `Date: ${day}<br>Deadline: ${eventText}`;
                     eventContainer.innerHTML = '';
                     eventContainer.appendChild(eventItem);
                     eventContainer.style.display = 'block';
 
                     // Adjust the cell height to fit the content
-                    cell.style.height = `$cell.clientHeight` + `eventContainer.clientHeight`;
+                    cell.style.height = `${cell.clientHeight + eventContainer.clientHeight}px`;
                 }
             }
         });
